@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#11132f">
+<title>For Sunny ✦ A Little Universe of Wishes</title>
+<style>
+:root{--night:#10122d;--night2:#1b1d43;--gold:#ffe3a1;--pink:#ff9fc8;--lav:#c8b8ff;--white:#fffaf5;--muted:#c9c8e4}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--white);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;background:radial-gradient(ellipse at 50% 0%,#343362 0%,#191a3d 36%,var(--night) 76%);overflow-x:hidden}
+#stars{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+main{position:relative;z-index:1}
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 20px 55px;position:relative;isolation:isolate}
+.eyebrow{font-size:.72rem;letter-spacing:.27em;text-transform:uppercase;color:var(--gold);font-weight:800}
+.orbit{width:150px;height:150px;position:relative;display:grid;place-items:center;margin:10px auto 22px}
+.orbit:before,.orbit:after{content:"";position:absolute;inset:0;border:1px solid #ffe3a166;border-radius:50%;animation:spin 16s linear infinite}
+.orbit:after{inset:14px;border-color:#ff9fc877;animation-direction:reverse;animation-duration:11s}
+.orbit .planet{font-size:4.4rem;filter:drop-shadow(0 0 24px #ffcf8e88);animation:float 3.4s ease-in-out infinite}
+.orbit .tiny-star{position:absolute;color:var(--gold);font-size:1.3rem}
+.orbit .s1{top:-8px;right:14px}.orbit .s2{bottom:2px;left:0;color:var(--pink)}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3.4rem,10vw,7.8rem);line-height:.92;letter-spacing:-.065em;margin:0;color:#fff8ed;text-shadow:0 0 55px #c8b8ff22}
+h1 span{display:block;font-style:italic;color:var(--gold);font-weight:500}
+.intro{font-size:clamp(1rem,2.6vw,1.18rem);line-height:1.75;color:var(--muted);max-width:530px;margin:24px auto 27px}
+.primary{border:0;cursor:pointer;border-radius:999px;padding:15px 24px;background:linear-gradient(100deg,#ffe3a1,#ffb8d7);color:#24203e;font-weight:900;font-size:.98rem;box-shadow:0 8px 35px #ffb8d733;transition:transform .2s,box-shadow .2s}
+.primary:hover{transform:translateY(-3px);box-shadow:0 12px 42px #ffb8d755}
+.scroll-note{position:absolute;bottom:24px;color:#a8a7cd;font-size:.74rem;letter-spacing:.13em;text-transform:uppercase}
+.scroll-note span{display:block;font-size:1.2rem;margin-top:7px;animation:down 1.5s ease-in-out infinite}
+.section{width:min(960px,92%);margin:0 auto;padding:72px 0;text-align:center}
+.section-label{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--pink);font-weight:800}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.2rem,6vw,4rem);letter-spacing:-.04em;margin:12px 0 16px}
+.lead{color:var(--muted);line-height:1.8;max-width:590px;margin:0 auto 30px}
+.wish-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;text-align:left}
+.wish{border:1px solid #ffffff1c;background:linear-gradient(145deg,#ffffff0d,#ffffff04);border-radius:22px;padding:24px 20px;min-height:175px;backdrop-filter:blur(8px);transition:transform .25s,border-color .25s}
+.wish:hover{transform:translateY(-5px);border-color:#ffe3a166}
+.wish .icon{font-size:1.8rem}.wish h3{margin:15px 0 7px;color:var(--gold);font-size:1.05rem}.wish p{margin:0;color:#c8c7e1;font-size:.92rem;line-height:1.65}
+.letter-wrap{max-width:660px;margin:28px auto 0;padding:1px;border-radius:28px;background:linear-gradient(135deg,#ffe3a188,#ff9fc866,#c8b8ff88)}
+.letter{border-radius:27px;padding:clamp(24px,6vw,46px);background:#191a3af2;text-align:left}
+.letter-top{display:flex;align-items:center;justify-content:space-between;color:var(--gold);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
+.letter h3{font-family:Georgia,serif;font-size:2rem;font-weight:500;margin:28px 0 16px}
+.letter p{color:#d6d4eb;line-height:1.9;font-size:1rem}
+.signoff{color:var(--pink)!important;font-family:Georgia,serif;font-size:1.35rem!important;font-style:italic}
+.reveal{max-height:0;overflow:hidden;opacity:0;transition:max-height .9s ease,opacity .7s ease}
+.reveal.open{max-height:1200px;opacity:1}
+.secret{margin-top:20px;border:1px solid #ffffff24;background:#ffffff08;color:var(--white);border-radius:999px;padding:12px 18px;cursor:pointer;font-weight:700}
+.secret:hover{border-color:var(--gold)}
+.wish-maker{padding:35px 20px 55px;border-radius:28px;background:radial-gradient(ellipse at 50% 100%,#51427677,transparent 68%)}
+.cake{font-size:5.5rem;display:block;filter:drop-shadow(0 0 25px #ff9fc833);animation:float 3.6s ease-in-out infinite}
+.wish-result{min-height:30px;color:var(--gold);margin:20px 0 0;line-height:1.7}
+footer{text-align:center;padding:35px 20px 42px;color:#a9a8cb;font-size:.85rem;border-top:1px solid #ffffff10}
+footer strong{color:var(--pink)}
+.spark{position:fixed;pointer-events:none;z-index:10;animation:burst 1.3s ease-out forwards}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}@keyframes down{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}@keyframes burst{0%{transform:translate(0,0) scale(.4) rotate(0);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1.2) rotate(160deg);opacity:0}}
+@media(max-width:650px){.wish-grid{grid-template-columns:1fr}.wish{min-height:0;padding:20px}.hero{padding-top:48px}.orbit{width:125px;height:125px}.orbit .planet{font-size:3.8rem}.section{padding:55px 0}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<main>
+<section class="hero">
+  <div class="eyebrow">A tiny corner of the universe, made for you</div>
+  <div class="orbit" aria-hidden="true"><span class="tiny-star s1">✦</span><span class="tiny-star s2">✧</span><span class="planet">🎂</span></div>
+  <h1>Happy Birthday,<span>Sunny.</span></h1>
+  <p class="intro">Today, the universe has one very important job: to remind one very special person how much light they bring into the world.</p>
+  <button class="primary" id="startBtn">Open your little surprise <span aria-hidden="true"> ↗</span></button>
+  <div class="scroll-note">Your birthday universe awaits<span>⌄</span></div>
+</section>
+
+<section class="section" id="surprise">
+  <div class="section-label">A few wishes for your next trip around the sun</div>
+  <h2>May life be extra kind to you.</h2>
+  <p class="lead">Not just today. On ordinary Tuesdays, on big brave days, and on the days when you need a little reminder that good things are still finding their way to you.</p>
+  <div class="wish-grid">
+    <article class="wish"><div class="icon">🌠</div><h3>Big, beautiful dreams</h3><p>May you find the courage to chase the things that make your eyes light up.</p></article>
+    <article class="wish"><div class="icon">☕</div><h3>Little everyday joys</h3><p>Good food, unexpected laughs, peaceful evenings, and reasons to smile for no reason.</p></article>
+    <article class="wish"><div class="icon">🪄</div><h3>Lovely surprises</h3><p>May life exceed your expectations in the most wonderful, plot-twist kind of way.</p></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">A note, just for you</div>
+  <h2>Something to keep.</h2>
+  <p class="lead">Some gifts fit in a box. Others are little words you can come back to whenever you need them.</p>
+  <div class="letter-wrap"><div class="letter">
+    <div class="letter-top"><span>✦ A birthday note</span><span>For Sunny ♡</span></div>
+    <div class="reveal" id="letterReveal">
+      <h3>Dear Sunny,</h3>
+      <p>Here’s to another year of becoming more you — discovering new things, collecting stories, laughing until your cheeks hurt, and finding happiness in places you never expected.</p>
+      <p>I hope this year brings you people who feel like sunshine, opportunities that excite you, peace that stays, and memories that become your favourite stories to tell.</p>
+      <p>And when life gets busy, I hope you remember this: you deserve good things, not just because of what you achieve, but simply because you are you.</p>
+      <p>Make a wish that feels a little too big. Take the picture. Eat the cake. Celebrate yourself properly.</p>
+      <p class="signoff">Have the happiest birthday, Sunny. ✨</p>
+    </div>
+    <button class="secret" id="letterBtn" aria-expanded="false">Tap to unwrap your letter ✉</button>
+  </div></div>
+</section>
+
+<section class="section wish-maker">
+  <div class="section-label">The most important birthday ritual</div>
+  <h2>Make a wish, Sunny.</h2>
+  <span class="cake" id="cake" aria-hidden="true">🕯️🎂🕯️</span>
+  <p class="lead">Take a tiny breath, think of something wonderful, and tap the button when you're ready.</p>
+  <button class="primary" id="wishBtn">I made my wish ✨</button>
+  <p class="wish-result" id="wishResult" aria-live="polite"></p>
+</section>
+</main>
+<footer>Made with a little extra <strong>love</strong> and a whole universe of good wishes for Sunny. ✦</footer>
+<script>
+(() => {
+ const canvas=document.getElementById('stars'),ctx=canvas.getContext('2d');
+ let stars=[],w=0,h=0;
+ function resize(){w=canvas.width=window.innerWidth*devicePixelRatio;h=canvas.height=window.innerHeight*devicePixelRatio;canvas.style.width=window.innerWidth+'px';canvas.style.height=window.innerHeight+'px';ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);stars=Array.from({length:Math.min(170,Math.floor(window.innerWidth/7))},()=>({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:Math.random()*1.5+.3,a:Math.random()*.65+.15,p:Math.random()*6.28}));}
+ function draw(t){ctx.clearRect(0,0,window.innerWidth,window.innerHeight);for(const s of stars){const twinkle=s.a*(.68+.32*Math.sin(t*.0008+s.p));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle='rgba(255,239,202,'+twinkle+')';ctx.fill();}requestAnimationFrame(draw);}
+ resize();window.addEventListener('resize',resize);requestAnimationFrame(draw);
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function burst(x,y){if(reduce)return;const symbols=['✦','✧','♥','✺','•'];for(let i=0;i<26;i++){const el=document.createElement('span');el.className='spark';el.textContent=symbols[Math.floor(Math.random()*symbols.length)];el.style.left=x+'px';el.style.top=y+'px';el.style.color=['#ffe3a1','#ff9fc8','#c8b8ff','#fffaf5'][i%4];el.style.fontSize=(Math.random()*18+10)+'px';el.style.setProperty('--dx',(Math.random()*300-150)+'px');el.style.setProperty('--dy',(Math.random()*-250-25)+'px');document.body.appendChild(el);setTimeout(()=>el.remove(),1400);}}
+ document.getElementById('startBtn').addEventListener('click',e=>{document.getElementById('surprise').scrollIntoView({behavior:reduce?'auto':'smooth'});burst(e.clientX,e.clientY);});
+ const reveal=document.getElementById('letterReveal'),letterBtn=document.getElementById('letterBtn');
+ letterBtn.addEventListener('click',e=>{const open=reveal.classList.toggle('open');letterBtn.setAttribute('aria-expanded',String(open));letterBtn.textContent=open?'Fold your letter back up ♡':'Tap to unwrap your letter ✉';if(open)burst(e.clientX,e.clientY);});
+ let wished=false;
+ document.getElementById('wishBtn').addEventListener('click',e=>{const result=document.getElementById('wishResult');const cake=document.getElementById('cake');if(!wished){wished=true;cake.textContent='💨🎂💨';result.textContent='Wish sent to the universe. May it find its way to you. ✨';document.getElementById('wishBtn').textContent='One more celebration!';burst(e.clientX,e.clientY);}else{cake.textContent='🎂✨🎂';result.textContent='Birthday magic: activated. Keep being wonderfully you, Sunny!';burst(e.clientX,e.clientY);}});
+})();
+</script>
+</body>
+</html>
